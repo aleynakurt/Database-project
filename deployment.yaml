@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: databaseproject
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: databaseproject
+  template:
+    metadata:
+      labels:
+        app: databaseproject
+    spec:
+      containers:
+      - name: databaseproject
+        image: aleynakurt/databaseproject
+        ports:
+        - containerPort: 50505
+        env:
+        - name: MONGO_DB_HOST
+          valueFrom: 
+            configMapKeyRef:
+              name: databaseproject-configmap
+              key: MONGO_DB_HOST
+        - name: MONGO_DB_PORT
+          valueFrom: 
+            configMapKeyRef:
+              name: databaseproject-configmap
+              key: MONGO_DB_PORT
+        - name: MONGO_DB_NAME
+          valueFrom: 
+            configMapKeyRef:
+              name: databaseproject-configmap
+              key: MONGO_DB_NAME
+      
+      
+
+
+
+

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: databaseproject-configmap
+data:
+  MONGO_DB_HOST: databaseproject-mongodb-service
+  MONGO_DB_PORT: '27017'
+  MONGO_DB_NAME: databaseproject
+
+
+
+

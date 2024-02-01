@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: databaseproject
+spec:
+  serviceName: databaseproject
+  replicas: 1
+  selector:
+    matchLabels:
+      app: databaseproject
+  template:
+    metadata:
+      labels:
+        app: databaseproject
+    spec:
+      containers:
+        - name: databaseproject
+          image: aleynakurt/databaseproject
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: pvc
+              mountPath: /data/db
+  volumeClaimTemplates:
+    - metadata:
+        name: pvc
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: databaseproject
+  name: databaseproject-service
+spec:
+  selector:
+    app: databaseproject
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 50505 
+  type: LoadBalancer
