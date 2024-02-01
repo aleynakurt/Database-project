@@ -40,6 +40,7 @@ After the dockerfile I created, I created the Docker image using this Dockerfile
 
 # 3. Kubernetes Deployment:
 I created a **‘configmap.yaml’**. This file is used in the Kubernetes deployment file of the application called databaseproject, providing the connection information required to connect to MongoDB at the application's runtime. In this way, connection information can be updated according to changes in the application's Kubernetes environment.
+
 In addition, I created **‘deployment.yaml’**. Here, a configuration is defined to run the application called **‘databaseproject’** as three replicas, and the MongoDB connection information that this application will use is obtained through configmap.yaml.
 
 ![img](Img/img9.png)
